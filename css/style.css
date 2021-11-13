@@ -1,7 +1,8 @@
 /* Variables */
 :root{
-   --hilight: #e85d75ff;
-   --hover-hilight: #f96e86ff;
+   /* --hilight: #e85d75ff; */
+   --hilight: #DF2935;
+   --hover-hilight: #f52637;
    --dark-gray: #333;
    --light-gray: #f5f5f5;
    --white: #fcfcfc;
@@ -17,6 +18,13 @@
 body{
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    font-size: 10px;
+   display: flex;
+   flex-direction: column;
+}
+
+body header .hero,
+body section .container{
+   margin: 3vh 0;
 }
 
 /* Utils */
@@ -43,7 +51,7 @@ body{
 }
 
 .card-box-shadow{
-   box-shadow: 10px 10px 6px 0px rgba(0,0,0,0.08);
+   box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.08);
 }
 
 .card-height-large{height: 700px; max-height: 700px;}
@@ -128,21 +136,21 @@ body{
 
 /* Navbar */
 #navbar {
-   height: 6vh;
    position: sticky;
    top:0;
    background-color: var(--white);
    display: flex;
-   display: flex;
    align-items: center;
    justify-content:space-between;
    z-index: 100;
+   padding: 1vh 0;
 }
 
 #navbar .container{
    display: flex;
    align-items: center;
    justify-content:space-between;
+   
 }
 
 #navbar .navbar-links ul li{
@@ -189,7 +197,8 @@ body{
 
 /* Hero */
 #hero{
-   height: 94vh;
+   /* height: 94vh; */
+   width: 100%;
    background: url('../img/background.jpg') center center/cover;
    z-index: -1;
 }
@@ -198,7 +207,7 @@ body{
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 90vh;
+   /* height: 90vh; */
 }
 
    /* Hero Content */
@@ -207,7 +216,6 @@ body{
       line-height: 2.5rem;
       color: var(--dark-gray);
       padding: 2rem;
-      padding-left: ;
       text-align: center;
    }
 
@@ -216,7 +224,7 @@ body{
       border-radius: 3px;
       margin: 2rem;
       margin-left: 0;
-      opacity: .9;
+      opacity: .95;
    }
 
    #hero .hero-content .hero-heading{
@@ -263,8 +271,10 @@ body{
 
    /* Hero Img */
    #hero .hero-img{
-      width: 33%;
-      max-width: 33%;
+      margin: 1%;
+      width: 50vh;
+      max-width: 30%;
+      min-width: 30%;
       background: url('../img/racing.jpg') center center/cover;
       padding: 2rem;
    }
@@ -281,21 +291,26 @@ body{
 
 
 /* Process Boxes */
-#process-boxes,
-#process-boxes .container {
-   height: 40vh;
+#process-boxes{
    display: flex;
-   justify-content: center;
+   margin: auto;
+}
+
+#process-boxes .container {
+   display: flex;
+   justify-content: space-around;
    align-items: center;
 }
 
 #process-boxes .container .box{
+   position: relative;
    margin: 0 5rem;
    padding: 1rem;
    background-color: var(--light-gray);
    color: var(--dark-gray);
    text-align: center;
-   transition: transform 330ms ease-in-out;
+   transition: transform 330ms ease;
+   flex-shrink: 0;
 }
 
 #process-boxes .container .box .circle-number{
@@ -320,10 +335,24 @@ body{
 }
 
 #process-boxes .box:hover{
-   transform: scale(1.05);
+   transform: translateY(-.35em);
 }
 
+#process-boxes .container .box::after{
+   content: '';
+   position: absolute;
+   top:0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   opacity: 0;
+   box-shadow: 10px 10px 6px 0px rgba(0,0,0,0.09);
+   transition: opacity 330ms ease;
+}
 
+#process-boxes .container .box:hover::after{
+   opacity: 1;
+}
 
 
 
@@ -334,7 +363,9 @@ body{
 
 /* Showcase */
 #showcase{
-   height: 70vh; 
+
+   /* min-height: 70vh; 
+   height: auto; */
    background-color: var(--light-gray);
    z-index: -100;
    display: flex;
@@ -343,9 +374,10 @@ body{
 }
 
 #showcase .container .showcase-content{
-   height: 60vh;
+   /* height: 60vh; */
    display: grid;
    grid-template-columns: repeat(20, 1fr);
+   flex-shrink: 0;
 }
 
 #showcase .showcase-text,
@@ -355,11 +387,12 @@ body{
 
 #showcase .showcase-text{
    align-self: flex-start;
-   grid-column: 3/12;
+   grid-column: 2/10;
    grid-row: 1/10;
 }
+
 #showcase .showcase-big-info{
-   grid-column: 2/19;
+   grid-column: 1/-1;
    grid-row:2/20;
 }
 
@@ -402,6 +435,7 @@ body{
 }
 
 #showcase .showcase-big-info .card-content .card-head{
+   text-align: center;
    font-size: 2rem;
 }
 
@@ -434,7 +468,7 @@ body{
 
 /* Contact Form */
 #contact-form{
-   height: 60vh;
+   /* height: 60vh; */
    text-align: center;
    display: flex;
    justify-content: center;
@@ -512,6 +546,7 @@ body{
 /* Footer */
 footer{
    background-color: var(--dark-gray);
+   margin: 0;
 }
 
 footer .container{
@@ -537,7 +572,7 @@ footer .social-icons i:hover{
 }
 
 footer .social-icons a:hover{
-   cursor:default;
+   cursor: default;
 }
 
 footer h2{
